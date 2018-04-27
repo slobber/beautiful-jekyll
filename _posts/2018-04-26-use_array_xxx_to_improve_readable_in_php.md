@@ -17,7 +17,7 @@ category: [ php ]
 
 这4个函数威力巨大， 在处理列表数组方面可以完全替换掉for、foreach、while这些循环控制语句， 这也是函数式编程方式在PHP的一部份体现。
 
-### 1. array_filter 函数
+## 1. array_filter 函数
 
 ```php
 $data = [
@@ -72,7 +72,7 @@ $result = array_filter($data, function($item) use($gender){
 }
 ```
 
-### 2. array_map函数 
+## 2. array_map函数 
 
 再来看一个例子
 
@@ -116,9 +116,9 @@ $result = array_map($data, function($item) {
 
 在这里使用到了 array_map 函数 。 在 SQL 语句中以 select 语句最为常用， select 的字面意思是“选择”，而 select 语句也被称之为选择查询， 事实上从关系数据库的角度来说，select 被称之为“投影”， 并不是查询什么的。 换言之， select 语句只是将 SQL 的查询结果以一定的方式（选字段、计算值等等）提取出来了。 PHP 中的 array_map 表达的也是这层意思， “映射”与“投影”完全是一种意思的不同表达。
 
-### 3. array_walk
+## 3. array_walk
 
-### 4. array_reduce
+## 4. array_reduce
 
 
 当然，可读性提升的副作用就是性能的下降，建议以上代码写在注释里，方便后人理解循环的逻辑吧。X_X
