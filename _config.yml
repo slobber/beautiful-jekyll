@@ -24,14 +24,12 @@ description: Slobber's slobber
 # List of links in the navigation bar
 navbar-links:
   Home: "https://nandi.wang"
-  About Me: "https://nandi.wang/aboutme"
-  Languages:
-    - PHP: "https://nandi.wang/php"
-    - DotNet: "https://nandi.wang/dotnet"
-    - Python: "https://nandi.wang/python"
-    - Frontend: "https://nandi.wang/frontend"
-    - Go: "https://nandi.wang/go"
-    - Swift: "https://nandi.wang/swift"
+  PHP: "https://nandi.wang/php"
+  DotNet: "https://nandi.wang/dotnet"
+  Python: "https://nandi.wang/python"
+  Frontend: "https://nandi.wang/frontend"
+  Go: "https://nandi.wang/go"
+  Swift: "https://nandi.wang/swift"
   Github: "https://github.com/slobber/"
 
 # Image to show in the navigation bar - image must be a square (width = height)
