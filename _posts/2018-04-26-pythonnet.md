@@ -68,7 +68,7 @@ if __name__ == '__main__':
 ![HelloXaml 运行结果](/assets/python/pythonnet.1.png)
 
 ## 进阶
-如果写个 Windows 程序都要写这么一大堆配置代码，实在是超级不 Pythonish。因此，封装了所有固定代码，同时还增加了一些约定方法，让 pythonnet 使用起来更加方便。见 [win_helper/helper.py](./win_helper/helper.py)
+如果写个 Windows 程序都要写这么一大堆配置代码，实在是超级不 Pythonish。因此，封装了所有固定代码，同时还增加了一些约定方法，让 pythonnet 使用起来更加方便。见 [win_helper/helper.py](https://github.com/slobber/pythonnet-test/win_helper/helper.py)
 
 通过一个更有意思的程序看看 helper 都帮助我们做了什么：
 ```python
@@ -137,4 +137,8 @@ Xaml 可以通过 Microsoft Expression Studio 4 进行布局设计。
 
 虽然 helper.py 可以简化很多操作，但是如果希望可以更加自由的管理窗口及控件，我们可以定义一个 `load` 方法。这个方法将在窗口建立后调用。举例，也许你希望把不同的按钮绑定到同一个事件处理方法上。在这个方法中，你就可以不按照约定的方式绑定事件；或者有某个控件，你的程序会经常使用，每次使用 `self.controls['All']['SomeControl']` 太啰嗦，你可以在这个函数里定义个 `self.some_control = self.controls['All']['SomeControl']`，这样以后使用上就方便很多了。
 
-你可以参看 [calc.py](./calc.py)，学习一下一个比较完整的 Windows 程序的例子。
+你可以参看 [calc.py](https://github.com/slobber/pythonnet-test/calc.py)，学习一下一个比较完整的 Windows 程序的例子。
+
+## 传送门
+
+[slobber/pythonnet-test](https://github.com/slobber/pythonnet-test)
