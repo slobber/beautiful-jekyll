@@ -381,9 +381,6 @@ footer .theme-by {
 }
 .post-preview .post-read-more {
   font-weight: 800;
-  display: block;
-  text-align: center;
-  margin: 0.5em 2em 1em;
 }
 
 @media only screen and (min-width: 768px) {
