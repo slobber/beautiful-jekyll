@@ -1,6 +1,6 @@
 ---
 layout: post
-title: PHP 中使用 array_* 提升代码可读性.md
+title: PHP 中使用 array_* 提升代码可读性
 image: /assets/php/use_array_xxx.logo.png
 category: [ php ]
 ---
