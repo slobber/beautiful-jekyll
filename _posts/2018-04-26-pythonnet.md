@@ -65,7 +65,7 @@ if __name__ == '__main__':
 
 运行成功你会看到这样的结果：
 
-![HelloXaml 运行结果](./1.png)
+![HelloXaml 运行结果](/assets/python/pythonnet.1.png)
 
 ## 进阶
 如果写个 Windows 程序都要写这么一大堆配置代码，实在是超级不 Pythonish。因此，封装了所有固定代码，同时还增加了一些约定方法，让 pythonnet 使用起来更加方便。见 [win_helper/helper.py](./win_helper/helper.py)
@@ -131,7 +131,7 @@ Xaml 是微软出品的一个布局设计语言，其官方的文档已经非常
 
 Xaml 可以通过 Microsoft Expression Studio 4 进行布局设计。
 
-![Expression Blend 4](./2.png)
+![Expression Blend 4](/assets/python/pythonnet.2.png)
 
 ## 自定义绑定事件
 
