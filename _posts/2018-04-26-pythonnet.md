@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 使用 pythonnet 库开发 Windows 程序
-image: /img/hello_world.jpeg
+image: /assets/python/pythonnet.logo.png
 category: [ python ]
 ---
 
