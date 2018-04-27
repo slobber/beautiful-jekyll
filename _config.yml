@@ -110,7 +110,7 @@ url-pretty: "nandi.wang"  # eg. "deanattali.com/beautiful-jekyll"
 # Google Tag Manager ID
 #gtm: ""
 
-cnzz_analytics: "1273550855"
+# cnzz_analytics: ""
 
 # Matomo (aka Piwik) Web statistics
 # Uncomment the following section to enable Matomo. The opt-out parameter controls
