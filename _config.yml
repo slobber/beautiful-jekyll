@@ -23,7 +23,6 @@ description: Slobber's slobber
 
 # List of links in the navigation bar
 navbar-links:
-  Home: "https://nandi.wang"
   PHP: "https://nandi.wang/php"
   DotNet: "https://nandi.wang/dotnet"
   Python: "https://nandi.wang/python"
