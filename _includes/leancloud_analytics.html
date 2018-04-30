@@ -19,7 +19,7 @@
         counter.fetchWhenSave(true);
         counter.increment("hit");// 将点击次数加1
         counter.save().then(function (counter) {
-          var $element = $(document.getElementById(url));
+          var $element = $('[data-id="'+ url +'"]');
           var newTimes = counter.get('hit');
           $element.find('.visitors-count').text(newTimes);
         }, function (counter, error) {
@@ -37,7 +37,7 @@
         newcounter.set("url", url); // 文章url
         newcounter.set("hit", 1); // 初始点击次数：1次
         newcounter.save().then(function (newcounter) {
-          var $element = $(document.getElementById(url));
+          var $element = $('[data-id="'+ url +'"]');
           var newTimes = newcounter.get('hit');
           $element.find('.visitors-count').text(newTimes);
         }, function (newcounter, error) {
@@ -57,7 +57,7 @@
       newcounter.set("url", url); // 文章url
       newcounter.set("hit", 1); // 初始点击次数：1次
       newcounter.save().then(function (newcounter) {
-        var $element = $(document.getElementById(url));
+        var $element = $('[data-id="'+ url +'"]');
         var newTimes = newcounter.get('hit');
         $element.find('.visitors-count').text(newTimes);
       }, function (newcounter, error) {
@@ -78,7 +78,7 @@
     query.find().then(function (results) {
       if (results.length > 0) {//说明LeanCloud中已经记录了这篇文章
         var counter = results[0];
-        var $element = $(document.getElementById(url));
+        var $element = $('[data-id="'+ url +'"]');
         var newTimes = counter.get('hit');
         $element.find('.visitors-count').text(newTimes);
       } else {
