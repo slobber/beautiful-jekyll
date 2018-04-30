@@ -117,8 +117,7 @@
 
     query.equalTo("ip", ip);
     query.equalTo("url", post_url);
-    query.find({
-      success: function(results) {
+    query.find().then( function(results) {
         if (results.length > 0) {
           console.log('该 IP 已访问过该文章');
 
@@ -145,31 +144,26 @@
             console.log('这是该IP 1分钟内重复访问该文章，不更新访问记录，不增加访问次数');
             showCount(Counter);
           }
-        } else {
-          console.log('该IP第一次访问该文章，保存新的访问记录，并增加访问次数');
-
-          addCount(Counter);
-
-          var newVisitor = new Visitor();
-          /* Set ACL */
-          var acl = new AV.ACL();
-          acl.setPublicReadAccess(true);
-          acl.setPublicWriteAccess(true);
-          newVisitor.setACL(acl);
-          newVisitor.set("ip", ip);
-          newVisitor.set("url", post_url);
-          newVisitor.save(null, { // 上传到LeanCloud服务器中
-            success: function(newVisitor) { },
-            error: function(newVisitor, error) {
-              console.log('Failed to create visitor record, with error message: ' + error.message);
-            }
-          });
         }
-      },
-      error: function(error) {
-        console.log('Error:' + error.code + " " + error.message);
-        addCount(Counter);
-      }
+    }, function(error) {
+      console.log('该 IP 第一次访问该文章，保存新的访问记录，并增加访问次数');
+
+      addCount(Counter);
+
+      var newVisitor = new Visitor();
+      /* Set ACL */
+      var acl = new AV.ACL();
+      acl.setPublicReadAccess(true);
+      acl.setPublicWriteAccess(true);
+      newVisitor.setACL(acl);
+      newVisitor.set("ip", ip);
+      newVisitor.set("url", post_url);
+      newVisitor.save(null, { // 上传到LeanCloud服务器中
+        success: function(newVisitor) { },
+        error: function(newVisitor, error) {
+          console.log('Failed to create visitor record, with error message: ' + error.message);
+        }
+      });
     });
   }
 
