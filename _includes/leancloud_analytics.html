@@ -18,15 +18,12 @@
         var counter = results[0];
         counter.fetchWhenSave(true);
         counter.increment("hit");// 将点击次数加1
-        counter.save(null, {
-          success: function (counter) {
-            var $element = $(document.getElementById(url));
-            var newTimes = counter.get('hit');
-            $element.find('.visitors-count').text(newTimes);
-          },
-          error: function (counter, error) {
-            console.log('Failed to save Visitor num, with error message: ' + error.message);
-          }
+        counter.save().then(function (counter) {
+          var $element = $(document.getElementById(url));
+          var newTimes = counter.get('hit');
+          $element.find('.visitors-count').text(newTimes);
+        }, function (counter, error) {
+          console.log('Failed to save Visitor num, with error message: ' + error.message);
         });
       }
     }, function (error) {
@@ -41,15 +38,12 @@
       newcounter.set("title", title);// 把文章标题
       newcounter.set("url", url); // 文章url
       newcounter.set("hit", 1); // 初始点击次数：1次
-      newcounter.save(null, { // 上传到LeanCloud服务器中
-        success: function (newcounter) {
-          var $element = $(document.getElementById(url));
-          var newTimes = newcounter.get('hit');
-          $element.find('.visitors-count').text(newTimes);
-        },
-        error: function (newcounter, error) {
-          console.log('Failed to create');
-        }
+      newcounter.save().then(function (newcounter) {
+        var $element = $(document.getElementById(url));
+        var newTimes = newcounter.get('hit');
+        $element.find('.visitors-count').text(newTimes);
+      },function (newcounter, error) {
+        console.log('Failed to create');
       });
     });
   }
@@ -135,6 +129,25 @@
           console.log('这是该IP 1分钟内重复访问该文章，不更新访问记录，不增加访问次数');
           showCount(Counter);
         }
+      } else {
+        console.log('该 IP 第一次访问该文章，保存新的访问记录，并增加访问次数');
+
+        addCount(Counter);
+
+        var newVisitor = new Visitor();
+        /* Set ACL */
+        var acl = new AV.ACL();
+        acl.setPublicReadAccess(true);
+        acl.setPublicWriteAccess(true);
+        newVisitor.setACL(acl);
+        newVisitor.set("ip", ip);
+        newVisitor.set("url", post_url);
+        newVisitor.save(null, { // 上传到LeanCloud服务器中
+          success: function (newVisitor) { },
+          error: function (newVisitor, error) {
+            console.log('Failed to create visitor record, with error message: ' + error.message);
+          }
+        });
       }
     }, function (error) {
       console.log('该 IP 第一次访问该文章，保存新的访问记录，并增加访问次数');
