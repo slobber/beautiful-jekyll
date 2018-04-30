@@ -19,7 +19,7 @@ PHP 是弱型别语言，可以使用 `type hint`，也可使用 `duck type`，�
 1. 在 PhpStorm 输入 `/**`，然后按下 `↩`，PhpStorm 会自动依据当时的游标的位置产生适当的 `PHPDoc blocks`。
 2. ***Code->Generate*** 或按 `Ctrl + N`，会产生 `Generate` 选单，选择 `PHPDoc Blocks`。
 
-![](/asset/php/phpdoc000.png)
+![](/assets/php/phpdoc000.png)
 
 3. 在适当时机按下 `Alt + ↩`，会出现 `Generate PHPDoc for ...`。如刚建立完 class, property 或 method 时。
 

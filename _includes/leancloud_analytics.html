@@ -42,7 +42,7 @@
         var $element = $(document.getElementById(url));
         var newTimes = newcounter.get('hit');
         $element.find('.visitors-count').text(newTimes);
-      },function (newcounter, error) {
+      }, function (newcounter, error) {
         console.log('Failed to create');
       });
     });
@@ -119,12 +119,10 @@
           addCount(Counter);
 
           oldVisitor.fetchWhenSave(true);
-          oldVisitor.save(null, {
-            success: function (oldVisitor) { },
-            error: function (oldVisitor, error) {
+          oldVisitor.save().then(function (oldVisitor) { },
+            function (oldVisitor, error) {
               console.log('Failed to save visitor record, with error message: ' + error.message);
-            }
-          });
+            });
         } else {
           console.log('这是该IP 1分钟内重复访问该文章，不更新访问记录，不增加访问次数');
           showCount(Counter);
@@ -142,12 +140,11 @@
         newVisitor.setACL(acl);
         newVisitor.set("ip", ip);
         newVisitor.set("url", post_url);
-        newVisitor.save(null, { // 上传到LeanCloud服务器中
-          success: function (newVisitor) { },
-          error: function (newVisitor, error) {
+        newVisitor.save().then(
+          function (newVisitor) { },
+          function (newVisitor, error) {
             console.log('Failed to create visitor record, with error message: ' + error.message);
-          }
-        });
+          });
       }
     }, function (error) {
       console.log('该 IP 第一次访问该文章，保存新的访问记录，并增加访问次数');
@@ -162,12 +159,11 @@
       newVisitor.setACL(acl);
       newVisitor.set("ip", ip);
       newVisitor.set("url", post_url);
-      newVisitor.save(null, { // 上传到LeanCloud服务器中
-        success: function (newVisitor) { },
-        error: function (newVisitor, error) {
+      newVisitor.save().then(
+        function (newVisitor) { }, 
+        function (newVisitor, error) {
           console.log('Failed to create visitor record, with error message: ' + error.message);
-        }
-      });
+        });
     });
   }
 
