@@ -36,7 +36,12 @@
 		  {% endif %}
 		  
 		  {% if include.type == "post" %}
-		  <span class="post-meta">发表于 {{ page.date | date: "%B %-d, %Y" }}</span>
+      <span class="post-meta">发表于 {{ page.date | date: "%B %-d, %Y" }}</span>
+      {% if site.leancloud %}
+        <span data-id="{{ page.url }}" class="visitors" data-flag-title="{{ page.title }}">
+          &nbsp;<span class="visitors-count"></span> 次访问
+        </span>
+      {% endif %}
 		  {% endif %}
         </div>
       </div>
@@ -62,6 +67,11 @@
 		  
 		  {% if include.type == "post" %}
 		  <span class="post-meta">发表于 {{ page.date | date: "%B %-d, %Y" }}</span>
+      {% if site.leancloud %}
+        <span data-id="{{ page.url }}" class="visitors" data-flag-title="{{ page.title }}">
+          &nbsp;<span class="visitors-count"></span> 次访问
+        </span>
+      {% endif %}
 		  {% endif %}
         </div>
       </div>
