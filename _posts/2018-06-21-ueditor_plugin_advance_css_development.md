@@ -60,7 +60,8 @@ p.poll::after {
 ### 几个需要注意的点
 
 1. ::after
-    > CSS伪元素::after用来创建一个伪元素，做为已选中元素的最后一个子元素。通常会配合content属性来为该元素添加装饰内容。这个虚拟元素默认是行内元素。  
+    > CSS伪元素::after用来创建一个伪元素，做为已选中元素的最后一个子元素。通常会配合content属性来为该元素添加装饰内容。这个虚拟元素默认是行内元素。 
+    
     ::after 中必须指定 content 才能看到效果
 1. z-index  
     z-index 也是有嵌套关系的，比如：
@@ -78,7 +79,49 @@ p.poll::after {
     #inner-1 { position:absolute; width:100px; height:100px; z-index:3; left:80px; top:0px; background: #8c8cf7 }
     #inner-2 { position:absolute; width:100px; height:100px; z-index:4; left:80px; top:0px; background: #9ba09b }
     ```
-    ![divs cover relationship](/assets/frontend/divs-cover-demo.png)
+    ![divs cover relationship](/assets/frontend/divs-cover-demo.png)  
     [Demo](https://jsfiddle.net/slobber/d83qoap5/)
 1. content  
+    > CSS 的 content 属性用于在元素的 ::before 和 ::after 伪元素中插入内容。使用content 属性插入的内容都是匿名的可替换元素。
     
+    content 只能用于 ::before 和 ::after 之间，并且 content 支持很多方式的设置，可以实现一些意向不到的效果。
+    1. 最简单的就是放置一个字符串
+    2. 还可以放置一个链接内容，比如图片，链接： url(uri)
+    3. 父标签中的属性值：attr(attribute_name)
+    4. 一些特殊的符号，比如引号
+    5. 这些东西可以都连在一起用，只需要空格隔开
+    
+    讲这么细致，是因为，我们的代码中会用到。因为之前的代码有一个问题，content 部分这么写到 css 里是固定的，所有的投票域都是一样的文字，如果一页当中有好几个投票，目前是分不出来的。所以我们在插入 html 时再赋给 p 标签一个属性值 `style="poll id"`，利用 content 的功能，就可以实现最终效果了。
+    
+最终的 css：
+```css
+p.poll {
+    display: block;
+    position: relative;
+    visibility: hidden;
+    padding: 5px;
+    height: 21px;
+}
+p.poll:after {
+    position: absolute;
+    left:0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    content:"======= 请勿修改此投票域 [[" attr(style) "]] ======";
+    text-align: center;
+    color:#cacaca;
+    z-index: 0;
+    border:1px solid #ccc;
+    background: #efefef;
+    padding: 5px;
+    visibility: visible;
+    height: 21px;
+}
+```
+
+## 代码
+[项目](https://github.com/slobber/ueditor-plugin-css-magic)
+
+效果：  
+![screenshot](/assets/frontend/ueditor-demo.png)
