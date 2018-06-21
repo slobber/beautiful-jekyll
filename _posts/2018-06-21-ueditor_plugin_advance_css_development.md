@@ -39,16 +39,16 @@ p.poll {
     padding: 5px;
     height: 21px;
 }
-p.poll:after {
+p.poll::after {
     position: absolute;
     left:0px;
     right: 0px;
     top: 0px;
     bottom: 0px;
-    content:"======= 请勿修改此投票域 [[" attr(style) "]] ======";
+    content: "======= 请勿修改此投票域 ======";
     text-align: center;
-    color:#cacaca;
-    z-index: 0;           /* 最风骚的设置，
+    color: #cacaca;
+    z-index: 0;           /* 最风骚的设置，设置为 0 文字就不可选了，完美实现需求 */
     border:1px solid #ccc;
     background: #efefef;
     padding: 5px;
@@ -56,3 +56,29 @@ p.poll:after {
     height: 21px;
 }
 ```
+
+### 几个需要注意的点
+
+1. ::after
+    > CSS伪元素::after用来创建一个伪元素，做为已选中元素的最后一个子元素。通常会配合content属性来为该元素添加装饰内容。这个虚拟元素默认是行内元素。  
+    ::after 中必须指定 content 才能看到效果
+1. z-index  
+    z-index 也是有嵌套关系的，比如：
+    ```html
+    <div id="wrap">
+        <div id="outer-1">outer-1<div id="inner-1">inner-1</div></div>
+        <div id="outer-2">outer-1<div id="inner-2">inner-2</div></div>
+    </div>
+    ```
+    ```css
+    div { color:#ececec }
+    #wrap { position:relative }
+    #outer-1 { position:absolute; width:100px; height:100px; z-index:1; left:10px; top:10px; background: #fb8f8f }
+    #outer-2 { position:absolute; width:100px; height:100px; z-index:2; left:160px; top:10px; background: #7bd87b }
+    #inner-1 { position:absolute; width:100px; height:100px; z-index:3; left:80px; top:0px; background: #8c8cf7 }
+    #inner-2 { position:absolute; width:100px; height:100px; z-index:4; left:80px; top:0px; background: #9ba09b }
+    ```
+    ![divs cover relationship](/assets/frontend/divs-cover-demo.png)
+    [Demo](https://jsfiddle.net/slobber/d83qoap5/)
+1. content  
+    
