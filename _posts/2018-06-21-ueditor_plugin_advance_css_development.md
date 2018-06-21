@@ -1,7 +1,7 @@
 ---
 layout: post
 title: UEditor 插件开发中的 CSS 高级应用
-image: /assets/python/pythonnet.logo.png
+image: /assets/frontend/ueditor.logo.png
 category: [ frontend ]
 ---
 
