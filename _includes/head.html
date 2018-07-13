@@ -26,7 +26,7 @@
       <link rel="stylesheet" href="{{ css | prepend: site.baseurl | replace: '//', '/' }}" />
     {% endfor %}
   {% endif %}
-
+  <link rel="stylesheet" href="https://cdn.rawgit.com/tonsky/FiraCode/1.205/distr/fira_code.css">
   {% if page.ext-css %}
     {% for css in page.ext-css %}
       {% include ext-css.html css=css %}
